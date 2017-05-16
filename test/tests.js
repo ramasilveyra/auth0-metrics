@@ -346,7 +346,7 @@ describe('Auth0 - Metrics', function () {
 
 
 
-  describe('normal page track flow without segment', function() {
+  describe.skip('normal page track flow without segment', function() {
     var segmentSave;
     before(function() {
       clearData();

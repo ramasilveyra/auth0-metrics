@@ -108,7 +108,7 @@
             metrics[key] = metrics.factory(key);
           }
 
-          metrics.load = function(segmentKey, dwhEndpoint){
+          metrics.load = function(dwhEndpoint){
             var script = document.createElement('script');
             script.type = 'text/javascript';
             script.async = true;
@@ -121,14 +121,14 @@
 
             script.onload = function(){
               // Grab analytics and make it private
-              window.metrics = new Auth0Metrics(segmentKey, dwhEndpoint, 'website');
+              window.metrics = new Auth0Metrics(dwhEndpoint, 'website');
             }
 
             var first = document.getElementsByTagName('script')[0];
             first.parentNode.insertBefore(script, first);
           };
 
-          metrics.load("WqErZyd56ob3pmMDnko55hNgFt8B4Zox", "http://auth0-metrics-server.herokuapp.com/dwh-metrics");
+          metrics.load("http://auth0-metrics-server.herokuapp.com/dwh-metrics");
           }();
 
           metrics.ready(function(){

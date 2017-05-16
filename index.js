@@ -14,29 +14,26 @@ module.exports = Auth0Metrics;
 
 /**
  * Create `Auth0Metrics` instance
- * resolving `options`. If you send an empty ('') segmentKey, it will be mocked up
+ * resolving `options`. If you send an empty (''), it will be mocked up
  *
- * @param {String} segmentKey
  * @param {String} dwhEndpoint
  * @param {String} label
  * @return {Auth0Metrics}
  * @constructor
  */
 
-function Auth0Metrics (segmentKey, dwhEndpoint, label) {
+function Auth0Metrics (dwhEndpoint, label) {
   if (!(this instanceof Auth0Metrics)) {
-    return new Auth0Metrics(segmentKey, dwhEndpoint, label);
+    return new Auth0Metrics(dwhEndpoint, label);
   }
 
   // validate required options
-  if ('string' !== typeof segmentKey) throw new Error('`segmentKey` required as first parameter.');
   if ('string' !== typeof dwhEndpoint) throw new Error('`dwhEndpoint` required as first parameter.');
 
   // Instance properties and options
   this.$options = {};
 
   // Save clientID and domain in $options
-  this.$options.segmentKey = segmentKey;
   this.$options.dwhEndpoint = dwhEndpoint;
   this.$options.label = label;
 
